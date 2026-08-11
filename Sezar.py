@@ -17,3 +17,10 @@ def caesar_decrypt(text, shift):
         else:
             result += char
     return result
+
+def brute_force_caesar(cipher_text):
+    candidates = []
+    for shift in range(26):
+        plain = caesar_decrypt(cipher_text, shift)
+        candidates.append((shift, plain))
+    return candidates
