@@ -78,3 +78,18 @@ def test_success_rate(text_lengths, num_tests=50):
         success_rates.append(correct / num_tests)
     
     return success_rates
+
+def plot_success_rate():
+    lengths = range(5, 105, 5)
+    rates = test_success_rate(lengths, num_tests=50)
+    
+    plt.figure(figsize=(10, 6))
+    plt.plot(lengths, rates, marker='o', linewidth=2, color='blue')
+    plt.xlabel('طول متن رمزشده (تعداد کاراکتر)', fontsize=12)
+    plt.ylabel('نرخ موفقیت', fontsize=12)
+    plt.title('موفقیت رمزشکنی سزار بر اساس طول متن', fontsize=14)
+    plt.grid(True, alpha=0.3)
+    plt.ylim(0, 1.1)
+    plt.axhline(y=1.0, color='red', linestyle='--', alpha=0.5, label='موفقیت کامل')
+    plt.legend()
+    plt.show()
