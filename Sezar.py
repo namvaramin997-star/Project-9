@@ -1,3 +1,7 @@
+import matplotlib.pyplot as plt
+import random
+import string
+
 def caesar_encrypt(text, shift):
     result = ""
     for char in text:
