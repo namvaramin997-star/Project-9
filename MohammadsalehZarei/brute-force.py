@@ -16,4 +16,4 @@ def estimate_bruteforce_time(key_space, keys_per_second=1e9):
     return seconds, years
 
 sec, years = estimate_bruteforce_time(eng_space)
-print(f"با فرض {1e9:.0e} کلید در ثانیه، زمان لازم: {years:.3e} سال")
+print(f"با فرض اینکه {1e9:.0e} کلید در ثانیه، زمان لازم: {years:.3e} سال")
