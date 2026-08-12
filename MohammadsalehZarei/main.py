@@ -103,7 +103,21 @@ def partial_decrypt(text, guess, alphabet):
     )
 
 
+def print_analysis(text, alphabet):
+    print("\nFrequency table:")
+    print("Letter  Count  Percent")
+    for c, n, p in frequency_table(text, alphabet):
+        print(f"{c:>6} {n:>6} {p:>7.2f}")
 
+    print(f"\nIndex of Coincidence = {index_of_coincidence(text, alphabet):.6f}")
+
+    print("\nTop bigrams:")
+    for gram, n in ngram_frequency(text, alphabet, 2).most_common(10):
+        print(gram, n)
+
+    print("\nTop trigrams:")
+    for gram, n in ngram_frequency(text, alphabet, 3).most_common(10):
+        print(gram, n)
 
 
 def main():
