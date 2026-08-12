@@ -45,3 +45,18 @@ def score_text(text, freq_table):
             count += 1
     return score / count if count > 0 else 0
 
+def crack_caesar(cipher_text):
+    best_shift = 0
+    best_score = -1
+    best_plain = ""
+    
+    for shift in range(26):
+        plain = caesar_decrypt(cipher_text, shift)
+        score = score_text(plain, ENGLISH_FREQ)
+        
+        if score > best_score:
+            best_score = score
+            best_shift = shift
+            best_plain = plain
+    
+    return best_shift, best_plain, best_score
