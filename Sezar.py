@@ -60,3 +60,21 @@ def crack_caesar(cipher_text):
             best_plain = plain
     
     return best_shift, best_plain, best_score
+
+def test_success_rate(text_lengths, num_tests=50):
+    success_rates = []
+    for L in text_lengths:
+        correct = 0
+        for _ in range(num_tests):
+            plain = ''.join(random.choice(string.ascii_lowercase + ' ') for _ in range(L))
+            shift = random.randint(1, 25)
+            cipher = caesar_encrypt(plain, shift)
+            
+            best_shift, _, _ = crack_caesar(cipher)
+            
+            if best_shift == shift:
+                correct += 1
+        
+        success_rates.append(correct / num_tests)
+    
+    return success_rates
